@@ -71,11 +71,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/:artName', function (req, res) {
-    var artName = req.params.artName;
-  res.send(createTemplate(article[artName]));
-});
-
 app.get('/a1', function (req, res) {
 res.sendFile(path.join(__dirname, 'ui', 'a1.html'));
 });
@@ -94,6 +89,11 @@ app.get('/ui/style.css', function (req, res) {
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+});
+
+app.get('/:artName', function (req, res) {
+    var artName = req.params.artName;
+  res.send(createTemplate(article[artName]));
 });
 
 
