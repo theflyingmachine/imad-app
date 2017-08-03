@@ -5,12 +5,61 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
+var article1 = {
+    title: 'Article 1',
+    date: '3-August-2017',
+    header: 'This is my Javascript Article',
+    paragraph:`<p>This is a paragraph which will be generated my the javascript code.</p>
+    <br>
+    <p>
+    This paga is served by the help of the javscript template.
+    </p>`
+    
+}
+
+
+
+function createTemplate (data){
+    var title = data.title;
+    var header = data.header;
+    var date = data.date;
+    var paragraph = data.paragraph;
+    
+var htmlTemplate=`<!doctype html>
+        <html>
+            <head>
+        <title>${title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link href="/ui/style.css" rel="stylesheet" />
+            </head>
+            <body>
+                <div class="container">
+                <div>
+        <a href="/">Home</a>
+                </div>
+                <br>
+                <div>
+        ${header}
+                </div>
+        <br>
+        <div>${date}</div>
+        <p align=center>${paragraph}</p>
+        </div>
+                <script type="text/javascript" src="/ui/main.js">
+                </script>
+            </body>
+        </html>
+        `;
+        return htmlTemplate;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/a1', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'a1.html'));
+  res.send(createTemplate(article1));
 });
 
 app.get('/a2', function (req, res) {
