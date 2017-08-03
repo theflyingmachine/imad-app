@@ -1,7 +1,7 @@
 //counter code
 var button = document.getElementById('counter');
 var counter = 0;
-
+alert("I am an alert box!");
 button.onclick = function(){
     //make a request to the counter endpoint
     
