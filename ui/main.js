@@ -25,8 +25,6 @@ request.send(null);
 };
 
 //submit name
-var nameInput = document.getElementById('name');
-var name = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function(){
     //make http request to server and submit name
@@ -50,6 +48,8 @@ submit.onclick = function(){
     };
     
     //Make the request
+    var nameInput = document.getElementById('name');
+var name = nameInput.value;
 request.open('GET', 'http://ericabrahamea.imad.hasura-app.io/submit-name?name=' +name, true);
 request.send(null);
    //capture a list of names and render it as a list
