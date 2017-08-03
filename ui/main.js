@@ -26,7 +26,7 @@ request.send(null);
 
 //submit name
 var nameInput = document.getElementById('name');
-var name = nameInput.value;
+var names = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function(){
     //make http request to server and submit name
@@ -38,4 +38,5 @@ submit.onclick = function(){
         list+='<li>' + names[i] + '</li>';
     }
     var ul = doucment.getElementById('namelist');
+    ul.innerHTML = list;
 };
