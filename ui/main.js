@@ -16,10 +16,10 @@ button.onclick = function(){
                 span.innerHTML = counter.toString();
             }
         }
-    }
+        //not yet done
+    };
     
-    //render the varianle in the correct span
-    counter = counter + 1;
-    var span = document.getElementById('count');
-    span.innerHTML = counter.toString();
+    //Make the request
+request.open('GET', 'http://ericabrahamea.imad.hasura-app.io/counter', true);
+request.send(null);
 };
