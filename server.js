@@ -71,6 +71,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+//counter code
+var counter = 0;
+app.get('/counter',function(req,res){
+    counter+=1;
+    res.send(counter.toString());
+});
+
 app.get('/a1', function (req, res) {
 res.sendFile(path.join(__dirname, 'ui', 'a1.html'));
 });
