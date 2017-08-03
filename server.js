@@ -6,7 +6,8 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var article1 = {
+var article = {
+    'art1':{
     title: 'Article 1',
     date: '3-August-2017',
     header: 'This is my Javascript Article',
@@ -15,8 +16,20 @@ var article1 = {
     <p>
     This paga is served by the help of the javscript template.
     </p>`
-    
-}
+    },
+    'art2':{
+    title: 'Article 2',
+    date: '3-August-2017',
+    header: 'This is my Javascript Article',
+    paragraph:`<p>This is a paragraph which will be generated my the javascript code.</p>`
+    },
+    'art3':{
+    title: 'Article 3',
+    date: '3-August-2017',
+    header: 'This is my Javascript Article',
+    paragraph:'<p>This is a paragraph which will be generated my the javascript code.</p>'
+    }
+};
 
 
 
@@ -58,8 +71,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+app.get('/:artName', function (req, res) {
+    var artName = req.params.artName;
+  res.send(createTemplate(article[artName]));
+});
+
 app.get('/a1', function (req, res) {
-  res.send(createTemplate(article1));
+res.sendFile(path.join(__dirname, 'ui', 'a1.html'));
 });
 
 app.get('/a2', function (req, res) {
