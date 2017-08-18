@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var crypto = require('crypto');
 
 
 var config = {
@@ -100,6 +101,18 @@ pool.query('SELECT * FROM USER', function(err,result){
         res.send(JSON.stringfy(result));
     }
 });
+});
+
+function hash(input){
+    // function to create a hash
+var  hashed = crypto.pbkdf2Sync('secret', 'salt', 10000, 512, 'sha512');
+return hashed.toString('hex');
+}
+
+
+app.get('/hash/:input', function (req, res) {
+    var hashedString = hash(req.params.input, 'this-is-my-rarndom-string');
+    res.send(hashedString);
 });
 
 app.get('/a1', function (req, res) {
