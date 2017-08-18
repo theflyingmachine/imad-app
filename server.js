@@ -10,7 +10,7 @@ var config = {
     database: 'ericabrahamea',
     host: 'db.imad.hasura-app.io',
     port: '51335',
-    password: process.env.DB.PASSWORD
+    password: 'nopassword'
 };
 
 
