@@ -103,7 +103,7 @@ pool.query('SELECT * FROM USER', function(err,result){
 });
 });
 
-function hash(input){
+function hash(input, salt){
     // function to create a hash
 var  hashed = crypto.pbkdf2Sync('secret', 'salt', 10000, 512, 'sha512');
 return ["pbkdf2", "10000", salt, hashed.toString('hex')].join($);
